@@ -2,13 +2,14 @@
 set -e
 set -x
 
-REGISTRY_HOST=$4
 DOCKER_BUILD=$@
 
-echo $REGISTRY_HOST
+array=(${DOCKER_BUILD// / })
+
 echo $DOCKER_BUILD
+echo ${array[3]}
 
 service docker start
 service docker status
 $DOCKER_BUILD
-docker push $REGISTRY_HOST
+docker push ${array[3]}
