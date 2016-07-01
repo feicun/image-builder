@@ -2,7 +2,7 @@
 set -e
 set -x
 
-REGISTRY_HOST=$3
+REGISTRY_HOST=$4
 DOCKER_BUILD=$@
 
 echo $REGISTRY_HOST
