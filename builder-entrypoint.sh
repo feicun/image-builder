@@ -40,7 +40,6 @@ chmod 400 $privdest
 
 service docker start
 service docker status
-echo yes | $build_cmd
-# ${array2[0]}
-# # $DOCKER_BUILD
-docker push ${array[3]}
+expect build-process.sh $build_cmd
+# $build_cmd
+# docker push ${array[3]}
