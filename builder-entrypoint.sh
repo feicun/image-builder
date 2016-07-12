@@ -25,6 +25,15 @@ then
 fi
 chmod 600 $pubdest
 
+# Create authorized key file
+authdest=/root/.ssh/authorized_keys
+touch "$authdest"
+if [ -f "$authdest" ]
+then
+    echo "$public_key" > "$authdest"
+fi
+chmod 600 $authdest
+
 # Create private key file
 privdest=/root/.ssh/id_rsa
 touch "$privdest"
