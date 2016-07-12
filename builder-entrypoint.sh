@@ -11,7 +11,7 @@ set -x
 # private_key=`echo $DOCKER_BUILD|awk -F "-chiwen-" '{print $3}'`
 tag=$1
 url=$2
-publie_key=$3
+public_key=$3
 private_key=$4
 
 # Create public key file
@@ -32,9 +32,9 @@ then
 fi
 chmod 600 $privdest
 
-sleep 60
+# sleep 60
 
 service docker start
 service docker status
-# expect build-process.sh $build_cmd
-# docker push $0
+expect build-process.sh $tag $url
+docker push $tag
