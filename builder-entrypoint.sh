@@ -14,7 +14,7 @@ url=$2
 public_key=$3
 private_key=$4
 
-sudo su - root
+# sudo su - root
 
 # Create public key file
 pubdest=/root/.ssh/id_rsa.pub
