@@ -36,6 +36,6 @@ chmod 600 $privdest
 
 service docker start
 service docker status
-git clone $url
-# expect build-process.sh $tag $url
+# git clone $url
+expect build-process.sh $tag $url
 docker push $tag
