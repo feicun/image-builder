@@ -18,9 +18,9 @@ apt-get install -y docker docker-engine
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY execute.sh /execute.sh
-COPY builder-entrypoint.sh /entrypoint.sh
-COPY build-process.sh /build-process.sh
-RUN chmod +x /entrypoint.sh
+COPY execute.sh /root/execute.sh
+COPY builder-entrypoint.sh /root/entrypoint.sh
+COPY build-process.sh /root/build-process.sh
+RUN chmod +x /root/entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/root/entrypoint.sh"]

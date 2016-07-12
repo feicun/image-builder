@@ -14,6 +14,8 @@ url=$2
 public_key=$3
 private_key=$4
 
+sudo su - root
+
 # Create public key file
 pubdest=/root/.ssh/id_rsa.pub
 touch "$pubdest"
@@ -37,5 +39,5 @@ chmod 600 $privdest
 service docker start
 service docker status
 # git clone $url
-expect build-process.sh $tag $url
+expect /root/build-process.sh $tag $url
 docker push $tag
