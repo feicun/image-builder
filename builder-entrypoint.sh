@@ -42,4 +42,4 @@ service docker start
 service docker status
 expect build-process.sh $build_cmd
 # $build_cmd
-# docker push ${array[3]}
+docker push ${array[3]}
