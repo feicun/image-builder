@@ -2,23 +2,17 @@
 set -e
 set -x
 
-DOCKER_BUILD=$@
+# DOCKER_BUILD=$@
 # Split container command by ' ' to get tag
-array=(${DOCKER_BUILD// / })
-# Split container command by 'sihua'
-# to get public key
-# array2=(${DOCKER_BUILD//@#@#@#@/ })
+# array=(${DOCKER_BUILD// / })
 
-build_cmd=`echo $DOCKER_BUILD|awk -F "-chiwen-" '{print $1}'`
-public_key=`echo $DOCKER_BUILD|awk -F "-chiwen-" '{print $2}'`
-private_key=`echo $DOCKER_BUILD|awk -F "-chiwen-" '{print $3}'`
-# echo $DOCKER_BUILD
-
-# Image tag
-# echo ${array[3]}
-
-# Public key
-# echo ${array2[1]}
+# build_cmd=`echo $DOCKER_BUILD|awk -F "-chiwen-" '{print $1}'`
+# public_key=`echo $DOCKER_BUILD|awk -F "-chiwen-" '{print $2}'`
+# private_key=`echo $DOCKER_BUILD|awk -F "-chiwen-" '{print $3}'`
+tag=$0
+url=$1
+publie_key=$2
+private_key=$3
 
 # Create public key file
 pubdest=/root/.ssh/id_rsa.pub
@@ -27,7 +21,7 @@ if [ -f "$pubdest" ]
 then
     echo "$public_key" > "$pubdest"
 fi
-chmod 400 $pubdest
+chmod 600 $pubdest
 
 # Create private key file
 privdest=/root/.ssh/id_rsa
@@ -36,10 +30,11 @@ if [ -f "$privdest" ]
 then
     echo "$private_key" > "$privdest"
 fi
-chmod 400 $privdest
+chmod 600 $privdest
+
+sleep 60
 
 service docker start
 service docker status
-expect build-process.sh $build_cmd
-# $build_cmd
-docker push ${array[3]}
+# expect build-process.sh $build_cmd
+# docker push $0
