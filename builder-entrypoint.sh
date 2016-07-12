@@ -9,10 +9,10 @@ set -x
 # build_cmd=`echo $DOCKER_BUILD|awk -F "-chiwen-" '{print $1}'`
 # public_key=`echo $DOCKER_BUILD|awk -F "-chiwen-" '{print $2}'`
 # private_key=`echo $DOCKER_BUILD|awk -F "-chiwen-" '{print $3}'`
-tag=$0
-url=$1
-publie_key=$2
-private_key=$3
+tag=$1
+url=$2
+publie_key=$3
+private_key=$4
 
 # Create public key file
 pubdest=/root/.ssh/id_rsa.pub
