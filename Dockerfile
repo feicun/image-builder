@@ -2,10 +2,13 @@
 # sure you lock down to a specific version, not to `latest`!
 # See https://github.com/phusion/baseimage-docker/blob/master/Changelog.md for
 # a list of version numbers.
-FROM phusion/baseimage:0.9.18
+# FROM phusion/baseimage:0.9.18
 
-# Use baseimage-docker's init system.
-CMD ["/sbin/my_init"]
+# Use phusion/baseimage-docker's init system.
+# CMD ["/sbin/my_init"]
+
+# Use official ubuntu as baseimage to reduce builder image's size
+FROM ubuntu:14.04.4
 
 # ...put your own build instructions here...
 RUN apt-get update -y && \

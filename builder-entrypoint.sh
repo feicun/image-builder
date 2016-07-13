@@ -2,19 +2,12 @@
 set -e
 set -x
 
-# DOCKER_BUILD=$@
-# Split container command by ' ' to get tag
-# array=(${DOCKER_BUILD// / })
-
-# build_cmd=`echo $DOCKER_BUILD|awk -F "-chiwen-" '{print $1}'`
-# public_key=`echo $DOCKER_BUILD|awk -F "-chiwen-" '{print $2}'`
-# private_key=`echo $DOCKER_BUILD|awk -F "-chiwen-" '{print $3}'`
 tag=$1
 url=$2
 public_key=$3
 private_key=$4
 
-# sudo su - root
+mkdir /root/.ssh
 
 # Create public key file
 pubdest=/root/.ssh/id_rsa.pub
@@ -43,10 +36,9 @@ then
 fi
 chmod 600 $privdest
 
-# sleep 60
+# Add ssh key to ssh-agent
+eval "$(ssh-agent -s)"
+ssh-add /root/.ssh/id_rsa
 
-service docker start
-service docker status
-# git clone $url
 expect /root/build-process.sh $tag $url
 docker push $tag
