@@ -5,5 +5,12 @@ expect "you want to continue connecting"
 send "yes\n"
 expect "Enter passphrase for key"
 send "\n"
-
-exit
+sleep 1
+expect "Successfully built" {
+	spawn /root/execute.sh docker push [lindex $argv 0]
+	expect "size:" {
+		exit 0
+	}
+	exit 1
+}
+exit 1
