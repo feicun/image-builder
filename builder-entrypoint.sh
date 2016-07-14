@@ -40,6 +40,5 @@ chmod 600 $privdest
 eval "$(ssh-agent -s)"
 ssh-add /root/.ssh/id_rsa
 
-# Use expect to run docker build
+# Use expect to run docker build and docker push
 expect /root/build-process.sh $tag $url
-# docker push $tag

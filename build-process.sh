@@ -6,8 +6,10 @@ send "yes\n"
 expect "Enter passphrase for key"
 send "\n"
 sleep 1
+# expect build image successfully
 expect "Successfully built" {
 	spawn /root/execute.sh docker push [lindex $argv 0]
+    # expect push image successfully
 	expect "size:" {
 		exit 0
 	}
