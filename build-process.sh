@@ -2,10 +2,9 @@
 set tag [lindex $argv 0]
 set url [lindex $argv 1]
 set branch [lindex $argv 2]
-spawn mkdir $tag
-spawn git clone -b $branch --single-branch $url "./$tag"
-spawn cd $tag
-spawn /root/execute.sh docker build -t $tag -f Dockerfile .
+spawn mkdir tmp-clone
+spawn git clone -b $branch --single-branch $url ./tmp-clone
+spawn /root/execute.sh docker build -t $tag -f ./tmp-clone/Dockerfile .
 expect "you want to continue connecting"
 send "yes\n"
 expect "Enter passphrase for key"
