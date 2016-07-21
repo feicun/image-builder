@@ -5,7 +5,7 @@ set branch [lindex $argv 2]
 spawn mkdir $tag
 spawn git clone -b $branch --single-branch $url "./$tag"
 spawn cd $tag
-spawn /root/execute.sh docker build -t [lindex $argv 0] [lindex $argv 1]
+spawn /root/execute.sh docker build -t $tag -f Dockerfile .
 expect "you want to continue connecting"
 send "yes\n"
 expect "Enter passphrase for key"
@@ -13,7 +13,7 @@ send "\n"
 sleep 1
 # expect build image successfully
 expect "Successfully built" {
-	spawn /root/execute.sh docker push [lindex $argv 0]
+	spawn /root/execute.sh docker push $tag
     # expect push image successfully
 	expect "size:" {
 		exit 0
