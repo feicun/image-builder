@@ -4,8 +4,9 @@ set -x
 
 tag=$1
 url=$2
-public_key=$3
-private_key=$4
+branch=$3
+public_key=$4
+private_key=$5
 
 mkdir /root/.ssh
 
@@ -41,4 +42,4 @@ eval "$(ssh-agent -s)"
 ssh-add /root/.ssh/id_rsa
 
 # Use expect to run docker build and docker push
-expect /root/build-process.sh $tag $url
+expect /root/build-process.sh $tag $url $branch

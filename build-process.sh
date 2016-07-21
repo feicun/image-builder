@@ -1,5 +1,10 @@
 #！/usr/bin/expect
-
+set tag [lindex $argv 0]
+set url [lindex $argv 1]
+set branch [lindex $argv 2]
+mkdir $tag
+spawn git clone -b $branch --single-branch $url "./$tag"
+cd $tag
 spawn /root/execute.sh docker build -t [lindex $argv 0] [lindex $argv 1]
 expect "you want to continue connecting"
 send "yes\n"
