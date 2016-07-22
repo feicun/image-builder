@@ -16,7 +16,7 @@ expect {
 # }
 expect {
     "Checking connectivity... done."
-    .* {exit 3} # 3 means clone repository failed
+    .* {exit 3}
 }
 # expect eof # Wait for git clone complete
 
