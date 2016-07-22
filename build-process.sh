@@ -16,7 +16,6 @@ expect {
 # }
 expect {
     "Checking connectivity... done."
-    .* {exit 3}
 }
 expect eof
 # expect eof # Wait for git clone complete
@@ -32,6 +31,8 @@ expect "Successfully built" {
 	expect "size:" {
 		exit 0
 	}
-	exit 4 # 4 means push built image failed
+    # 4 means push built image failed
+	exit 4
 }
-exit 5 # 5 means build failed
+# 5 means build failed
+exit 5
