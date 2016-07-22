@@ -8,10 +8,11 @@ spawn mkdir tmp-clone
 # Clone repository
 spawn git clone -b $branch --single-branch $url ./tmp-clone
 expect "you want to continue connecting"
-send "yes\n"
+send "yes\r"
 expect "Enter passphrase for key"
-send "\n"
-expect eof # Wait for git clone complete
+send "\r"
+expect "Checking connectivity... done."
+# expect eof # Wait for git clone complete
 
 # Build image
 spawn /root/execute.sh docker build -t $tag -f ./tmp-clone/Dockerfile ./tmp-clone
