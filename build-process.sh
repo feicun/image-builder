@@ -9,13 +9,13 @@ spawn mkdir tmp-clone
 spawn git clone -b $branch --single-branch $url ./tmp-clone
 expect {
     "you want to continue connecting" {send "yes\r"}
-    .* {exp_continue}
+    .*
 }
 # expect "Enter passphrase for key" {
     # send "\r"
 # }
 expect {
-    "Checking connectivity... done." {exp_continue}
+    "Checking connectivity... done."
     .* {exit 3} # 3 means clone repository failed
 }
 # expect eof # Wait for git clone complete
