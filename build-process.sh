@@ -18,6 +18,7 @@ expect {
     "Checking connectivity... done."
     .* {exit 3}
 }
+expect eof
 # expect eof # Wait for git clone complete
 
 # Build image
