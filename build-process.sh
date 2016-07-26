@@ -17,7 +17,7 @@ expect {
 expect {
     "Checking connectivity... done."
 }
-expect eof
+# expect eof
 # expect eof # Wait for git clone complete
 
 # Build image

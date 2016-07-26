@@ -8,11 +8,11 @@
 # CMD ["/sbin/my_init"]
 
 # Use official ubuntu as baseimage to reduce builder image's size
-FROM ubuntu:14.04.4
+FROM ubuntu:trusty
 
 # ...put your own build instructions here...
 RUN apt-get update -y && \
-apt-get install -y apt-transport-https ca-certificates software-properties-common curl git-core zip unzip expect
+apt-get install -y apt-transport-https ca-certificates software-properties-common curl git-core expect
 RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 RUN echo deb https://apt.dockerproject.org/repo ubuntu-trusty main > /etc/apt/sources.list.d/docker.list && \
 apt-get update -y && \
