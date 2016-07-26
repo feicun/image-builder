@@ -13,10 +13,10 @@ expect {
 # expect "Enter passphrase for key" {
     # send "\r"
 # }
-expect {
-    "Checking connectivity... done."
-}
-# expect eof
+# expect {
+    # "Checking connectivity... done."
+# }
+expect eof
 # expect eof # Wait for git clone complete
 
 # Build image
