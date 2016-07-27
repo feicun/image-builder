@@ -13,7 +13,8 @@ expect "yes/no" {send "yes\n"}
 # Make sure git clone completed
 # expect "Checking connectivity... done."
 # Another check to make sure git clone completed
-expect eof {send "\n"}
+# expect eof
+wait
 
 # Build image
 spawn /root/execute.sh docker build -t $tag -f ./tmp-clone/Dockerfile ./tmp-clone
