@@ -11,13 +11,14 @@ spawn git clone -b $branch --single-branch $url ./tmp-clone
 # "Are you sure you want to continue connecting"
 expect "yes/no" {send "yes\r"}
 # Make sure git clone completed
-expect "Checking connectivity... done."
+# expect "Checking connectivity... done."
 # Another check to make sure git clone completed
 expect eof
 
 # Build image
 spawn /root/execute.sh docker build -t $tag -f ./tmp-clone/Dockerfile ./tmp-clone
-sleep 1
+#sleep 1
+expect eof
 
 # expect build image successfully
 expect "Successfully built" {
