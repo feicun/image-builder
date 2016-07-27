@@ -9,8 +9,7 @@ spawn mkdir tmp-clone
 spawn git clone -b $branch --single-branch $url ./tmp-clone
 # Deal with connect to SSH server with private key prompt
 # "Are you sure you want to continue connecting"
-expect "yes/no"
-send "yes\r"
+expect "yes/no" {send "yes\r"}
 # Make sure git clone completed
 expect "Checking connectivity... done."
 # Another check to make sure git clone completed
