@@ -9,16 +9,16 @@ spawn mkdir tmp-clone
 spawn git clone -b $branch --single-branch $url ./tmp-clone
 # Deal with connect to SSH server with private key prompt
 # "Are you sure you want to continue connecting"
-expect "yes/no" {send "yes\r"}
+expect "yes/no" {send "yes\n"}
 # Make sure git clone completed
 # expect "Checking connectivity... done."
 # Another check to make sure git clone completed
-expect eof
+expect eof {send "\n"}
 
 # Build image
 spawn /root/execute.sh docker build -t $tag -f ./tmp-clone/Dockerfile ./tmp-clone
-#sleep 1
-expect eof
+sleep 1
+# expect eof
 
 # expect build image successfully
 expect "Successfully built" {
