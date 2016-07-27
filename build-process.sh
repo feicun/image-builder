@@ -10,16 +10,13 @@ spawn git clone -b $branch --single-branch $url ./tmp-clone
 # Deal with connect to SSH server with private key prompt
 # "Are you sure you want to continue connecting"
 expect "yes/no" {send "yes\n"}
-# Make sure git clone completed
-# expect "Checking connectivity... done."
-# Another check to make sure git clone completed
-# expect eof
 wait
 
 # Build image
 spawn /root/execute.sh docker build -t $tag -f ./tmp-clone/Dockerfile ./tmp-clone
-sleep 1
+# sleep 1
 # expect eof
+wait
 
 # expect build image successfully
 expect "Successfully built" {
