@@ -14,8 +14,6 @@ wait
 
 # Build image
 spawn /root/execute.sh docker build -t $tag -f ./tmp-clone/Dockerfile ./tmp-clone
-# sleep 1
-# expect eof
 wait
 
 # expect build image successfully
