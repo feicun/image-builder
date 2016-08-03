@@ -19,6 +19,7 @@ wait
 # expect build image successfully
 expect "Successfully built" {
 	spawn /root/execute.sh docker push $tag
+    wait
     # expect push image successfully
 	expect "size:" {
 		exit 0
