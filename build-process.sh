@@ -19,16 +19,16 @@ wait pidclone
 
 # expect build image successfully
 expect "Successfully built" {
-	spawn /root/execute.sh docker push $tag
+    spawn /root/execute.sh docker push $tag
     set pidpush [exp_pid]
     wait pidpush
     # expect push image successfully
-	expect "size:" {
-		exit 0
-	}
+    expect "size:" {
+        exit 0
+    }
     expect eof
     # 4 means push built image failed
-	exit 4
+    exit 4
 }
 # 5 means build failed
 exit 5
