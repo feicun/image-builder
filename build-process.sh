@@ -19,11 +19,11 @@ spawn /root/execute.sh docker build -t $tag -f ./tmp-clone/Dockerfile ./tmp-clon
 # expect build image successfully
 expect "Successfully built" {
 	spawn /root/execute.sh docker push $tag
-    # wait
     # expect push image successfully
 	expect "size:" {
 		exit 0
 	}
+    expect eof
     # 4 means push built image failed
 	exit 4
 }
