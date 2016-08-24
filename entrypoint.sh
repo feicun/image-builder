@@ -34,12 +34,9 @@ echo "$hostconfig" > "$sshconfig"
 mkdir tmp-gitclone
 
 set -x
-# 2>&1 redirect git clone output to stdout
-# git clone -b $branch --single-branch $url ./tmp-gitclone 2>&1
+
 git clone -b $branch --single-branch $url ./tmp-gitclone
 
-# docker build -t $tag -f ./tmp-gitclone/Dockerfile ./tmp-gitclone 2>&1
 docker build -t $tag -f ./tmp-gitclone/Dockerfile ./tmp-gitclone
 
-# docker push $tag 2>&1
 docker push $tag
